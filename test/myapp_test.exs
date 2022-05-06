@@ -4,9 +4,11 @@ defmodule MyappTest do
 
   import Mox
 
+  defp xxx(_, _, _ \\ []), do: 6
+
   test "adds two numbers" do
     Test.SpecialModuleMock
-    |> expect(:add, fn _, _ -> 6 end)
+    |> expect(:add, &xxx/3)
 
     assert Myapp.hello() == 6
   end
